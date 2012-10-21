@@ -20,11 +20,6 @@ class page_index extends Page {
 		->setLegendsOptions(array("layout"=>"vertical","align"=>"right","verticalAlign"=>"top"))
 		;
 
-		$btn2=$this->add('Button','btn2')->set('JSCLICKED')->js('click')->univ()->addSeries(array(
-						"name"=>"london",
-						"data"=>array(rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10),rand(1,10))
-						));
-
 		$jv=$this->add('View');
 		$this->add('Button','btn')
 			->js('click',$jv->js()->reload(array('btn'=>true)));
