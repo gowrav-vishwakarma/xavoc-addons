@@ -1,9 +1,17 @@
 xavoc-addons
 ============
 
-USING THIS ON a PAGE
 
-but the button clicked value is returned as text not executing ...
+add the following code in your frontend class to enjoy further xavoc-addons for agile
+
+$this->addLocation('.',array(
+            "addons"=>'xavoc-addons'
+            ));
+
+
+First Chart addon
+
+use following page code to test
 
 <?php
 
