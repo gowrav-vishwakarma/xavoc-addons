@@ -8,7 +8,7 @@ $.each(
 	},
 
 	addSeries: function(options){
-		this.this_chart.addSeries(options);
+		this.this_chart.addSeries(options,true);
 	}
 
 },$.univ._import);

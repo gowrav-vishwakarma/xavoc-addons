@@ -60,13 +60,18 @@ class Chart extends \View {
 		return $this;
 	}
 
+	function setData($data){
+		$this->options['series']=$data;
+	}
+
 	function render(){
-		$this->options['series']=array(
-				array(
-					"name"=>"tokyo",
-					"data"=>array(7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6)
-					)
-			);
+		// $this->options['series']=array(
+		// 		array(
+		// 			"name"=>"tokyo",
+		// 			"data"=>array(7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6)
+		// 			)
+		// 	);
+		if(!isset($this->options['series'])) $this->options['series']=array();
 		$this->options['chart']['renderTo']=$this->name;
 		if(!isset($this->options['chart']['type'])) $this->options['chart']['type']='line';
 		$this->js(true)
