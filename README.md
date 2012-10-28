@@ -13,6 +13,8 @@ First Chart addon
 
 use following page code to test
 
+For Further options you can check http://www.highcharts.com/
+
 <?php
 
 class page_index extends Page {
