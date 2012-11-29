@@ -7,6 +7,6 @@ class Model_AclPages extends \Model_Table {
 	function init(){
 		parent::init();
 		$this->addField('name');
-		$this->hasMany('xavoc_acl/AclPages','page_id');
+		$this->hasMany('xavoc_acl/Acl','page_id');
 	}
 }

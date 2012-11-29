@@ -26,14 +26,18 @@ class page_user_management extends \Page {
 			$this->add('View_Error')->set('This user is not allowed to edit acls, This has all the permissions');
 			return;
 		}
+
+		$map=$user->ref('xavoc_acl/Acl');
+		if($map->count()->getOne() == 0) {
+			$this->add('View_Info')->set('Log in with this account and try to access pages to make a request for admin');
+		}
+		
 		$v=$this->add('View');
 		$v->addClass('atk-box ui-widget-content ui-corner-all')
 		        ->addStyle('background','#eee');
-
 		$grid=$v->add('Grid');
 		$grid->addClass('acl_grid');
 		$grid->js('reloadgrid',$grid->js()->reload());
-		$map=$user->ref('xavoc_acl/Acl');
 		$grid->setModel($map);
 
 		$grid->addColumn('Expander','edit');
