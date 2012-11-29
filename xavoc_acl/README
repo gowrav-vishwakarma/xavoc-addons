@@ -8,18 +8,25 @@ This not only allow you to set if a page is accessible to a user or not but here
 HOW TO USE :: 
 
 1) get xavoc-addons and place it in your application root
-2) put the lines in your frontend api
-	$this->addLocation('.',array(
-            "addons"=>'xavoc-addons'
-            ));
 
 
-3) Run xavoc-addons/xavoc_acl/doc/acl.sql to create a few tables
+2) Run xavoc-addons/xavoc_acl/doc/acl.sql to create a few tables
 The tables created witll be 
 
 acl_pages
 acl_users
 users
+
+3) put the lines in your frontend api
+	$this->addLocation('.',array(
+            "addons"=>'xavoc-addons'
+            ));
+
+    $auth=$this->add('BasicAuth');
+          $auth->setModel('xavoc_acl/ACLUser','username','password');
+          $auth->check();
+    // Here you can use your own model also if it is as per para 6 of this readme
+
 
 if your existing application also uses any of the tables and if okey you can extend your existing models with the one provided in this add-ons (we will see this letter on at section 6, Currently assuming you don't have any such tables).
 

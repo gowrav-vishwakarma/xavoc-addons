@@ -29,3 +29,13 @@ CREATE TABLE `users` (
 PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
+
+INSERT INTO `school`.`users` (
+`id` ,
+`username` ,
+`password` ,
+`is_system_admin`
+)
+VALUES (
+NULL , 'admin', 'admin', '1'
+);
