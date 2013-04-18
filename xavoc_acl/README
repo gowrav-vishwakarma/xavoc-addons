@@ -1,0 +1,92 @@
+WHAT IS XAVOC-ACL add-ons
+
+This is a simple add-ons for Agile to manage your users with page level access management.
+This not only allow you to set if a page is accessible to a user or not but here you can also manage if user is allowed to perform add/edit/delete on the page (Acl only manage this thing for you but actual implementation on page is to be done by you)
+
+
+
+HOW TO USE :: 
+
+1) get xavoc-addons and place it in your application root
+
+
+2) Run xavoc-addons/xavoc_acl/doc/acl.sql to create a few tables
+The tables created witll be 
+
+acl_pages
+acl_users
+users
+
+3) put the lines in your frontend api
+	$this->addLocation('.',array(
+            "addons"=>'xavoc-addons'
+            ));
+
+    $auth=$this->add('BasicAuth');
+          $auth->setModel('xavoc_acl/ACLUser','username','password');
+          $auth->check();
+    // Here you can use your own model also if it is as per para 6 of this readme
+
+
+if your existing application also uses any of the tables and if okey you can extend your existing models with the one provided in this add-ons (we will see this letter on at section 6, Currently assuming you don't have any such tables).
+
+4) create a page like this to manage your users
+
+<?php
+class page_users extends xavoc_acl\page_user_management {}
+
+5) ON Any page, that you want under Acl control put the following line at the start of your page
+
+$acl=$this->add('xavoc_acl/Acl');
+
+like
+<?php
+class page_pageOne extends Page {
+	function init(){
+		parent::init();
+		$acl=$this->add('xavoc_acl/Acl');
+		...
+		your stuff
+
+	}
+}
+
+thats is ... 
+
+6) What if you need to extend user Model with extra information
+
+you simply create your model extending the one provided with this add-on like
+
+class Model_Users extends xavoc_acl\Model_ACLUser
+{
+    var $table='users';
+    function init()
+    {
+        parent::init();
+        ... and go on 
+    }
+}
+
+7) How to get permissions for current page if the current user is allowed to add/edit/delete on current page
+
+when you add this on your page
+$acl=$this->add('xavoc_acl/Acl');
+
+the following line returns what permissions are allowed to the user on current page 
+$permissions = $acl->getPermissions();
+
+as
+
+$permissions will be an array like array('allow_add'=>true/false,'allow_edit'=>true/false,'allow_del'=>true/false, 'allow_delete'=>true/false);
+
+you can simply use this $permissions on any crud also like
+
+$this->add('CRUD',$permissions);
+
+or use this array for your own logic
+...
+
+Hope that will be a bit help to you in managing your ACL
+
+
+xavoc.com

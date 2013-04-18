@@ -1,0 +1,32 @@
+<?Menu?>
+<?fixed_top?>
+<style>
+body{
+	margin-top: 100px;
+}
+</style>
+<?/fixed_top?>
+<div class="navbar <?fixed_top?>navbar-fixed-top<?/fixed_top?>">
+	<div class="navbar-inner">
+		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</a>
+		<a class="brand text-center" href="<?page?>index<?/?>"><?brand?><img src="<?template?>images/logo.png<?/?>" /><?/brand?></a>
+		<div class="nav-collapse">
+			<div id="<?$_name?>" class="atk-menu atk-menu-horizontal ui-widget">
+				<ul class="nav">
+					<?Item?>
+					<?MenuItem?>
+					<li id="<?$id?>" class="<?$class?>"><a href="<?$href?>"><?label?>MenuItem<?/?></a></li>
+					<?/MenuItem?>
+					<?/?>
+					<?$Content?>
+				</ul>
+			</div>
+			<?MenuSeparator?><?/MenuSeparator?>
+		</div>
+	</div>
+</div>
+<?/?>
