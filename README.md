@@ -8,3 +8,4 @@ $this->addLocation('.',array(
             "addons"=>'xavoc-addons'
             ));
 
+For more information on each add-ons, read the file README in the add-ons folder
