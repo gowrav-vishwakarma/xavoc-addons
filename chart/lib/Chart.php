@@ -34,7 +34,7 @@ class Chart extends \View {
 	function setTitle($title,$title_x_posistion=-20, $subtitle="",$subtitle_x_position=-20){
 		$this->options['title']=array(
 			'text'=>$title,
-			'x'=>$title_x_posistion
+			'x'=>$title_x_position
 			);
 		$this->options['subtitle']=array(
 			'text'=>$subtitle,
